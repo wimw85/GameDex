@@ -7,7 +7,7 @@ already put into it.
 This repository holds **releases and artwork only** — no source. Grab the newest
 build from the [Releases](https://github.com/wimw85/GameDex/releases) page.
 
-## Linux and Steam Deck
+## Running it
 
 1. Download `GameDex.AppImage`.
 2. Make it executable: `chmod +x GameDex.AppImage`
@@ -15,25 +15,48 @@ build from the [Releases](https://github.com/wimw85/GameDex/releases) page.
 
 The file name never changes, so a shortcut to it keeps working across updates.
 
-On a Steam Deck, add it from Desktop Mode as a non-Steam game and it appears in
-your library like anything else.
+## Adding it to Steam, including a Steam Deck
 
-**It updates itself.** Every launch it checks here for a newer build, downloads
-it in the background and applies it the next time you start. Settings shows which
-version is running and can check on demand. No connection, or this page
-unreachable? It carries on with the version you have.
+Add the AppImage from Desktop Mode as a non-Steam game, then set two things on
+the shortcut:
 
-## Artwork for the Steam shortcut
+**Compatibility: off.** Proton runs Windows programs; this is a Linux one.
+Forcing a compatibility tool is the most common reason it will not start.
 
-A non-Steam game has no artwork until someone gives it some. This repository
-carries a set — capsule, wide capsule, hero and logo — in
-[`steam-artwork/`](steam-artwork/), together with a script that installs them:
+**Launch options:**
 
-```bash
-python3 install-artwork.py
+```
+LD_PRELOAD= %command% --appimage-extract-and-run
 ```
 
-Run it in Desktop Mode after adding GameDex to Steam, then restart Steam.
+`LD_PRELOAD=` drops Steam's overlay for this app. The overlay is injected into
+every game Steam starts, and on this one it stopped the window from ever
+appearing — the app ran, Steam spun, and even Steam's own stop button could not
+end it. `--appimage-extract-and-run` sidesteps FUSE, which Game Mode does not
+always provide.
+
+With those two set, it runs in Desktop Mode and in Game Mode alike — measured on
+a real Deck.
+
+**If it still shows nothing**, `~/.config/GameDex/startup.log` is written on
+every launch and says how far it got.
+
+## Artwork for the shortcut
+
+A non-Steam game has no artwork until someone gives it some. Every release
+carries a set — capsule, wide capsule, hero and logo. In Steam: right-click
+GameDex → *Manage* → *Set custom artwork*, once per slot. The hero deliberately
+has no text on it, because Steam draws the logo over it.
+
+The same files, plus a script that installs them for you, are in
+[`steam-artwork/`](steam-artwork/).
+
+## It updates itself
+
+Every launch it checks here for a newer build, downloads it in the background and
+applies it the next time you start. Settings shows which version is running and
+can check on demand. No connection, or this page unreachable? It carries on with
+the version you have.
 
 ## What it needs from you
 
