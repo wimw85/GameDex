@@ -17,29 +17,15 @@ The file name never changes, so a shortcut to it keeps working across updates.
 
 ## Adding it to Steam, including a Steam Deck
 
-Add the AppImage from Desktop Mode as a non-Steam game, then set two things on
-the shortcut:
+Add the AppImage from Desktop Mode as a non-Steam game. One setting matters:
 
 **Compatibility: off.** Proton runs Windows programs; this is a Linux one.
 Forcing a compatibility tool is the most common reason it will not start.
 
-**Launch options:**
+No launch options are needed. It runs in Desktop Mode and in Game Mode alike.
 
-```
-LD_PRELOAD= %command% --appimage-extract-and-run
-```
-
-`LD_PRELOAD=` drops Steam's overlay for this app. The overlay is injected into
-every game Steam starts, and on this one it stopped the window from ever
-appearing — the app ran, Steam spun, and even Steam's own stop button could not
-end it. `--appimage-extract-and-run` sidesteps FUSE, which Game Mode does not
-always provide.
-
-With those two set, it runs in Desktop Mode and in Game Mode alike — measured on
-a real Deck.
-
-**If it still shows nothing**, `~/.config/GameDex/startup.log` is written on
-every launch and says how far it got.
+**If it shows nothing**, `~/.config/GameDex/startup.log` is written on every
+launch and says how far it got. Settings shows the running version.
 
 ## Artwork for the shortcut
 
