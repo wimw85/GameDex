@@ -108,6 +108,54 @@
             <li>Make it executable: right click, Properties, Executable.</li>
             <li>Add it to Steam as a non-Steam game so you can start it in Game Mode as well.</li>
           </ol>
+
+          <h3>Two settings on the shortcut</h3>
+          <p>
+            <strong>Compatibility off.</strong> Right click GameDex, Properties, Compatibility,
+            and leave the box unticked. Proton runs Windows programs; this is a Linux one, and
+            forcing a compatibility tool is the most common reason it refuses to start.
+          </p>
+          <p>
+            <strong>Launch options, if Game Mode stays black.</strong> Most installs need none, so
+            try it without first. If GameDex opens on the desktop but shows nothing in Game Mode,
+            put this in Properties, Shortcut, Launch options:
+          </p>
+          <p><code>LD_PRELOAD= %command% --appimage-extract-and-run</code></p>
+          <table>
+            <tr>
+              <th>Part</th>
+              <th>What it does</th>
+            </tr>
+            <tr>
+              <td>LD_PRELOAD=</td>
+              <td>
+                Empties the variable Steam fills with its overlay library. That library is pushed
+                into everything Steam starts and can stop a window from ever appearing under
+                gamescope. You lose the Steam overlay inside GameDex, which has no use for it.
+              </td>
+            </tr>
+            <tr>
+              <td>%command%</td>
+              <td>
+                Where Steam puts the program itself. Anything before it is environment, anything
+                after it is an argument.
+              </td>
+            </tr>
+            <tr>
+              <td>--appimage-extract-and-run</td>
+              <td>
+                Unpacks the AppImage to a temporary folder instead of mounting it through FUSE.
+                Game Mode's session is a poor place to be mounting things.
+              </td>
+            </tr>
+          </table>
+          <div class="note">
+            <p>
+              <strong>You do not need <code>--no-sandbox</code>.</strong> Every build wraps its own
+              executable so that flag is always passed. Adding it by hand changes nothing.
+            </p>
+          </div>
+
           <p>
             After that the app keeps itself current. When a new version exists it is fetched in
             the background and a small block appears in the rail with a button to restart into
