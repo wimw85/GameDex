@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GameDex manual</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="rail">
+        <div class="rail-brand">
+          <strong>GameDex</strong>
+          <span>manual</span>
+        </div>
+
+        <h2>Getting started</h2>
+        <a href="#what" class="here">What GameDex is</a>
+        <a href="#install">Installing</a>
+        <a href="#connect">Connecting Steam</a>
+
+        <h2>The library</h2>
+        <a href="#rail">The rail</a>
+        <a href="#card">A card, read</a>
+        <a href="#views">Three densities</a>
+        <a href="#search">Searching and sorting</a>
+        <a href="#collections">Collections</a>
+        <a href="#options">Hiding and finishing</a>
+
+        <h2>One game</h2>
+        <a href="#detail">Its own page</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#playing">Playing</a>
+        <a href="#installing">Installing and drives</a>
+
+        <h2>Not yours yet</h2>
+        <a href="#wishlist">Wishlist</a>
+        <a href="#prices">Prices and record lows</a>
+
+        <h2>The wider view</h2>
+        <a href="#statistics">Statistics</a>
+        <a href="#hltb">Fixing completion times</a>
+
+        <h2>Settings</h2>
+        <a href="#backup">Backup to Drive</a>
+        <a href="#storage">Storage and cache</a>
+        <a href="#updates">Updates</a>
+
+        <h2>Further</h2>
+        <a href="#controls">Controls</a>
+        <a href="#offline">Offline</a>
+        <a href="#sources">Where the data comes from</a>
+        <a href="#trouble">When something goes wrong</a>
+
+        <h2>Elsewhere</h2>
+        <a href="../">About GameDex</a>
+        <a href="https://github.com/wimw85/GameDex/releases/latest">Download</a>
+      </nav>
+
+      <main class="page">
+        <h1>GameDex manual</h1>
+        <p class="lede">
+          Everything the app can do, with screenshots of the app itself. Written for the Steam
+          Deck build; the phone does the same things, minus what only exists on a Deck (playing,
+          installing, reading your local Steam files).
+        </p>
+
+        <section id="what">
+          <h2>What GameDex is</h2>
+          <p>
+            GameDex is a second look at your Steam library. Steam shows what you own; GameDex
+            shows what you can do with it: how many hours your backlog holds, what is nearly
+            finished, what has not been touched since you bought it, and what on your wishlist is
+            on sale right now.
+          </p>
+
+          <figure>
+            <img src="assets/library-cards.png" alt="The library in GameDex" />
+            <figcaption>
+              The library. The rail with filters and counts on the left, your games on the right.
+            </figcaption>
+          </figure>
+
+          <div class="cards">
+            <div>
+              <h4>Everything stays local</h4>
+              <p>Your library lives in a database on the device itself. There is no server.</p>
+            </div>
+            <div>
+              <h4>Works offline</h4>
+              <p>Without a connection everything stays visible. Only updating has to wait.</p>
+            </div>
+            <div>
+              <h4>Changes nothing in Steam</h4>
+              <p>GameDex reads. All it asks Steam is: start this game, or install it.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="install">
+          <h2>Installing on a Steam Deck</h2>
+          <ol>
+            <li>Switch to desktop mode.</li>
+            <li>
+              Download the latest <code>GameDex.AppImage</code> from the releases page and put it
+              in <code>~/Applications</code>.
+            </li>
+            <li>Make it executable: right click, Properties, Executable.</li>
+            <li>Add it to Steam as a non-Steam game so you can start it in Game Mode as well.</li>
+          </ol>
+          <p>
+            After that the app keeps itself current. When a new version exists it is fetched in
+            the background and a small block appears in the rail with a button to restart into
+            it. See <a href="#updates">Updates</a>.
+          </p>
+        </section>
+
+        <section id="connect">
+          <h2>Connecting Steam</h2>
+          <p>
+            On first launch GameDex asks for your Steam account. On a Deck the app already knows
+            who is signed in, so that is usually one confirmation. What it also needs is a Steam
+            Web API key: you get one at <code>steamcommunity.com/dev/apikey</code> and paste it
+            into the setup screen.
+          </p>
+          <div class="note">
+            <p>
+              <strong>Mind your privacy setting.</strong> Steam only shares your library when
+              <em>Game details</em> is set to Public. Set to private, an empty list comes back,
+              and the app says so rather than pretending otherwise.
+            </p>
+          </div>
+          <p>
+            Then the first sync runs. It fetches your library, then achievements, completion
+            times, prices and artwork. The first time takes a few minutes; after that it is
+            keeping up rather than catching up.
+          </p>
+        </section>
+
+        <section id="rail">
+          <h2>The rail</h2>
+          <p>
+            The rail is the app's steering wheel. Every entry is a question about your library
+            with the answer beside it, so you can see what a filter would give you before you
+            press it.
+          </p>
+
+          <figure class="cutout tall">
+            <img src="assets/rail.png" alt="The rail with filters and counts" />
+            <figcaption>The rail, with how many games each entry holds.</figcaption>
+          </figure>
+
+          <table>
+            <tr>
+              <th>Entry</th>
+              <th>What it shows</th>
+            </tr>
+            <tr>
+              <td>Backlog</td>
+              <td>Everything unfinished and not hidden. The list you land on.</td>
+            </tr>
+            <tr>
+              <td>Perfect</td>
+              <td>Games where you unlocked every achievement.</td>
+            </tr>
+            <tr>
+              <td>So Close</td>
+              <td>Past 80 per cent but not complete. The list for an evening of finishing.</td>
+            </tr>
+            <tr>
+              <td>In progress</td>
+              <td>Started, but not far along.</td>
+            </tr>
+            <tr>
+              <td>Finished</td>
+              <td>What you marked as done yourself. Steam has no idea; you do.</td>
+            </tr>
+            <tr>
+              <td>Hidden</td>
+              <td>What you put out of sight, plus whatever you hid on Steam itself.</td>
+            </tr>
+            <tr>
+              <td>Family</td>
+              <td>Games somebody in your Steam family owns. Not yours, still playable.</td>
+            </tr>
+            <tr>
+              <td>Installed</td>
+              <td>What is on this Deck right now.</td>
+            </tr>
+            <tr>
+              <td>Non-Steam</td>
+              <td>What you added to Steam by hand: emulators, launchers, loose games.</td>
+            </tr>
+            <tr>
+              <td>Wishlist</td>
+              <td>Your Steam wishlist, with prices. See <a href="#wishlist">Wishlist</a>.</td>
+            </tr>
+          </table>
+
+          <p>
+            Exactly one entry is lit at any moment: the one you are looking at. At the foot of the
+            rail sit Statistics, Settings and, in desktop mode, a button to close the app.
+          </p>
+        </section>
+
+        <section id="card">
+          <h2>A card, read</h2>
+          <p>
+            Every game is one card, and every card says six things. They are always in the same
+            place, so you can read them without reading.
+          </p>
+
+          <div class="diagram" style="max-width: 694px">
+            <img src="assets/card.png" alt="A card with its parts numbered" />
+            <span class="pin" style="left: 126px; top: 180px">1</span>
+            <span class="pin" style="left: 248px; top: 92px">2</span>
+            <span class="pin" style="left: 248px; top: 140px">3</span>
+            <span class="pin" style="left: 248px; top: 188px">4</span>
+            <span class="pin" style="left: 248px; top: 228px">5</span>
+            <span class="pin" style="left: 248px; top: 286px">6</span>
+            <span class="pin" style="left: 496px; top: 286px">7</span>
+          </div>
+
+          <ul class="legend">
+            <li><b>1</b><span>Steam's own tall capsule. Where none exists you get a flat tile with a plus on it.</span></li>
+            <li><b>2</b><span>The name as Steam writes it.</span></li>
+            <li><b>3</b><span>How long the game runs according to HowLongToBeat. "No estimate" means no match was found, and you can make one by hand.</span></li>
+            <li><b>4</b><span>Time played on the left, when you last played on the right.</span></li>
+            <li><b>5</b><span>Achievements: the count and the percentage. "No achievements" means the game has none.</span></li>
+            <li><b>6</b><span>What it takes on disk, or would take if you installed it.</span></li>
+            <li><b>7</b><span>The button: <strong>Play</strong> when it is here, <strong>Install</strong> when it is not. While something is downloading this is the percentage instead.</span></li>
+          </ul>
+
+          <p>
+            A label can sit in the top right corner: <em>Family</em> for a game from your Steam
+            family, <em>Non-Steam</em> for something you added yourself. A gold badge at the
+            bottom left of the artwork means every achievement is unlocked.
+          </p>
+        </section>
+
+        <section id="views">
+          <h2>Three densities</h2>
+          <p>
+            Three small buttons sit at the top right. They answer the same question three ways:
+            how much of a game do you want to see at once. Your choice is remembered.
+          </p>
+
+          <h3>List</h3>
+          <p>
+            The densest of the three, for the thing a card is bad at: finding a title you already
+            have in mind. The figures sit in fixed columns, so you can run your eye down one of
+            them.
+          </p>
+          <figure>
+            <img src="assets/library-list.png" alt="The library as a list" />
+            <figcaption>List: about twenty rows where four cards would fit.</figcaption>
+          </figure>
+
+          <h3>Cards</h3>
+          <p>The default. Enough picture to recognise a game, enough text to choose one.</p>
+
+          <h3>Large cards</h3>
+          <p>The same card with more room. For when you are browsing rather than searching.</p>
+          <figure>
+            <img src="assets/library-large.png" alt="The library with large cards" />
+            <figcaption>Large cards: two columns instead of three.</figcaption>
+          </figure>
+        </section>
+
+        <section id="search">
+          <h2>Searching and sorting</h2>
+          <p>
+            Search sits behind the magnifying glass. On a Deck that is deliberately a button
+            rather than a field left open: as long as a text field exists anywhere, Steam keeps
+            offering its keyboard. The field only exists while you are actually searching.
+          </p>
+          <figure>
+            <img src="assets/search.png" alt="The search panel" />
+            <figcaption>The search panel, with how many games you are searching through.</figcaption>
+          </figure>
+
+          <p>Sorting sits in the menu beside it. What is on offer depends on the list:</p>
+          <table>
+            <tr>
+              <th>In your library</th>
+              <th>On the wishlist</th>
+            </tr>
+            <tr>
+              <td>Last played</td>
+              <td>Biggest discount</td>
+            </tr>
+            <tr>
+              <td>Time played</td>
+              <td>Price</td>
+            </tr>
+            <tr>
+              <td>Alphabetical</td>
+              <td>Alphabetical</td>
+            </tr>
+            <tr>
+              <td>Added to GameDex</td>
+              <td>Added to wishlist</td>
+            </tr>
+            <tr>
+              <td>HLTB length</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Achievement %</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Size or download</td>
+              <td></td>
+            </tr>
+          </table>
+          <figure class="narrow">
+            <img src="assets/sort-menu.png" alt="The sort menu" />
+            <figcaption>
+              The arrow beside the button flips the order. Each list keeps its own sort, so a trip
+              to the wishlist leaves your backlog as you left it.
+            </figcaption>
+          </figure>
+          <p>
+            Sorting by <em>Size or download</em> covers the whole library rather than only what is
+            installed: the download size comes out of Steam's own cache and is known for very
+            nearly every game you own.
+          </p>
+        </section>
+
+        <section id="collections">
+          <h2>Collections</h2>
+          <p>
+            The collections you made in Steam itself are here too. You can pick one or several at
+            once, and you can have the list grouped with a heading per collection.
+          </p>
+          <figure class="narrow">
+            <img src="assets/collections-menu.png" alt="The collections menu" />
+            <figcaption>
+              Several at once is fine. "Group by collection" puts headings between them, with
+              everything that belongs to none of them last.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="options">
+          <h2>Hiding and marking finished</h2>
+          <p>
+            Two things only you know: whether you are done with a game, and whether you never want
+            to see it again. Both sit in the menu you open with <kbd>Y</kbd> on a card, or with a
+            right click.
+          </p>
+          <figure class="narrow">
+            <img src="assets/options-menu.png" alt="The menu of things you can do to one game" />
+            <figcaption>Mark it finished, hide it, or open it.</figcaption>
+          </figure>
+          <p>
+            Hidden games drop out of every list and every count except <em>Hidden</em>. They are
+            also left out of the HowLongToBeat lookups, so hiding keeps the app quicker and the
+            traffic smaller.
+          </p>
+        </section>
+
+        <section id="detail">
+          <h2>A game's own page</h2>
+          <p>
+            Open a card and you get the whole game. The wide artwork with its logo at the top, and
+            everything the app knows below it.
+          </p>
+          <figure>
+            <img src="assets/detail.png" alt="A game's page" />
+            <figcaption>The chips under the artwork are the collections the game sits in.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/detail-stats.png" alt="Figures and charts on a game's page" />
+            <figcaption>
+              When you played, by month and by hour of the day. The app builds those charts itself
+              out of what it sees change at every sync: Steam keeps a total, not a history.
+            </figcaption>
+          </figure>
+          <p>Three actions sit at the bottom:</p>
+          <ul>
+            <li><strong>Look up completion times again</strong> asks HowLongToBeat once more.</li>
+            <li><strong>Pick the HowLongToBeat entry</strong> lets you choose the right one.</li>
+            <li><strong>Fetch artwork and achievements again</strong> re-downloads both.</li>
+          </ul>
+        </section>
+
+        <section id="achievements">
+          <h2>Achievements</h2>
+          <p>
+            The second tab on a game's page. Unlocked ones carry their date, the rest carry what
+            percentage of all players has them.
+          </p>
+          <figure>
+            <img src="assets/detail-achievements.png" alt="The achievement list" />
+            <figcaption>Sort by rarity, by when you unlocked them, or by name.</figcaption>
+          </figure>
+          <p>
+            Steam leaves hidden achievements blank. GameDex fills those descriptions in from what
+            SteamHunters knows, so you are not looking at an empty line.
+          </p>
+        </section>
+
+        <section id="playing">
+          <h2>Playing</h2>
+          <p>
+            The button on the card starts the game through Steam. On a Deck that works in Game
+            Mode as readily as on the desktop; GameDex asks Steam to start the game and everything
+            after that happens as it always does.
+          </p>
+          <p>
+            When the game is not here the button says <strong>Install</strong>. While something is
+            downloading the card counts the percentage and turns into <strong>Play</strong> the
+            moment it is in.
+          </p>
+        </section>
+
+        <section id="installing">
+          <h2>Installing, and which drive</h2>
+          <p>
+            A Deck has an internal disk and usually an SD card. Which of the two a game lands on
+            is a real decision, and you make it here before the download starts rather than in a
+            window Steam throws up afterwards.
+          </p>
+          <figure class="cutout" style="max-width: 520px">
+            <img src="assets/install-panel-cut.png" alt="The panel that asks which drive" />
+            <figcaption>
+              Per drive: what is free, how many games are already there, and how full it is. The
+              download size sits at the top.
+            </figcaption>
+          </figure>
+          <p>
+            If a game will not fit comfortably that line turns amber with <em>not enough room</em>.
+            GameDex allows two gigabytes of headroom: a drive filled to the last byte is a broken
+            Deck.
+          </p>
+          <div class="note">
+            <p>
+              <strong>No SD card, no question.</strong> With only one drive, or when Steam cannot
+              be reached, the panel skips itself and Steam installs the way it always did. You
+              notice nothing.
+            </p>
+          </div>
+        </section>
+
+        <section id="wishlist">
+          <h2>Wishlist</h2>
+          <p>
+            Your Steam wishlist is a page of its own, with the same cards but different figures:
+            no play time and no achievements, since you do not have those yet, but prices.
+          </p>
+          <figure>
+            <img src="assets/wishlist.png" alt="The wishlist" />
+            <figcaption>
+              Sorted by the biggest discount by default, so the best offer is first.
+            </figcaption>
+          </figure>
+          <figure class="cutout" style="max-width: 347px">
+            <img src="assets/wishlist-card.png" alt="A wishlist card up close" />
+            <figcaption>
+              Today's price, the old price struck through, the discount, the shop, and the lowest
+              it has ever been.
+            </figcaption>
+          </figure>
+          <p>
+            The button here says <strong>Store</strong>. It opens the shop holding the offer,
+            inside Steam itself, because in Game Mode there is no other browser.
+          </p>
+        </section>
+
+        <section id="prices">
+          <h2>Prices and record lows</h2>
+          <p>
+            Prices come from IsThereAnyDeal, which keeps a price history across some fifty shops.
+            That history is the point: 75 per cent off means nothing if the game was half that
+            last winter.
+          </p>
+          <table>
+            <tr>
+              <th>What it says</th>
+              <th>What it means</th>
+            </tr>
+            <tr>
+              <td>€12.49</td>
+              <td>The least you can pay for it anywhere today.</td>
+            </tr>
+            <tr>
+              <td><s>€49.99</s></td>
+              <td>What that same shop normally asks.</td>
+            </tr>
+            <tr>
+              <td>-75%</td>
+              <td>The difference between those two.</td>
+            </tr>
+            <tr>
+              <td>All-time low €8.43</td>
+              <td>The lowest ever recorded, anywhere.</td>
+            </tr>
+            <tr>
+              <td>Lowest it has ever been</td>
+              <td>Today's price matches or beats that record.</td>
+            </tr>
+          </table>
+          <div class="note">
+            <p>
+              <strong>Only offers with a Steam key.</strong> Shops selling their own copy, such as
+              GOG, Epic, Ubisoft, Microsoft, EA and Blizzard, stay out of view. Their prices are
+              real, but the game would land in a library other than the one this app is about.
+            </p>
+          </div>
+          <p>
+            The app also remembers the lowest price it has ever seen itself, and records when
+            something falls below it. That is not the same as a discount badge: shops announce a
+            discount at every sale, this only speaks up when it is genuinely cheaper than anything
+            we saw before.
+          </p>
+        </section>
+
+        <section id="statistics">
+          <h2>Statistics</h2>
+          <p>At the foot of the rail, or from Settings. Everything, added up.</p>
+          <figure>
+            <img src="assets/statistics.png" alt="The statistics screen" />
+            <figcaption>
+              Your backlog in hours, what you have played, what you never started, and your
+              achievement percentage across the whole library.
+            </figcaption>
+          </figure>
+          <p>
+            Below that come the charts: played per month, played per hour of the day, and the
+            value of your library at today's shop prices. That last one is emphatically not what
+            you paid; what you handed over at the time lives on your Steam account page and
+            nowhere an app can reach.
+          </p>
+        </section>
+
+        <section id="hltb">
+          <h2>Fixing completion times</h2>
+          <p>
+            Completion times come from HowLongToBeat, matched on title. Usually that works, but
+            not always: emulator entries carry the console's name, Pokémon games are filed without
+            the word "Version", and a sequel is sometimes listed under a name the first game does
+            not share.
+          </p>
+          <figure>
+            <img src="assets/completion-times.png" alt="The screen for fixing completion times" />
+            <figcaption>
+              Settings, then "Fix missing matches". Two lists: without an estimate, and matched
+              but unconfirmed.
+            </figcaption>
+          </figure>
+          <p>
+            Pick an entry yourself and it is pinned: the weekly refresh leaves it alone. You have
+            given the answer, after all.
+          </p>
+        </section>
+
+        <section id="backup">
+          <h2>Backup to Google Drive</h2>
+          <p>
+            Everything this app knows and Steam does not exists in one place: what you hid, what
+            you finished, your play history, the matches you fixed by hand. A Deck that dies takes
+            it with it. That is what this backup is for.
+          </p>
+          <figure>
+            <img src="assets/settings-backup.png" alt="The backup settings" />
+            <figcaption>Settings, then "Back up to Google Drive".</figcaption>
+          </figure>
+          <ol>
+            <li>Press <strong>Sign in with Google</strong> and sign in.</li>
+            <li>The first backup goes up straight away.</li>
+            <li>After that, every hour while the app is open. The last 24 are kept.</li>
+          </ol>
+          <p>
+            The files land in a <strong>GameDex Backups</strong> folder in your own Drive, so you
+            can get at them. GameDex asks for the narrowest access Google offers: files the app
+            creates, and nothing else in your Drive.
+          </p>
+        </section>
+
+        <section id="storage">
+          <h2>Storage and cache</h2>
+          <p>
+            Artwork and achievement icons are kept on the device, so the app opens quickly and
+            keeps working offline. How much that may cost is up to you.
+          </p>
+          <figure>
+            <img src="assets/settings-storage.png" alt="The storage settings" />
+            <figcaption>A limit per kind, with what is in use beside it.</figcaption>
+          </figure>
+        </section>
+
+        <section id="updates">
+          <h2>Updates</h2>
+          <p>
+            The app checks for a new version itself and fetches it in the background. Once it is
+            in, a small block appears at the foot of the rail with a button to restart. Nothing
+            appears while there is nothing to report.
+          </p>
+          <p>
+            By hand works too: Settings, then <strong>Check for updates</strong>. The version you
+            are running is written there as well.
+          </p>
+        </section>
+
+        <section id="controls">
+          <h2>Controls</h2>
+          <p>
+            The app is built for a Deck in your hands. A bar along the bottom always says what the
+            buttons do at that moment, and it only names buttons Steam actually passes through.
+          </p>
+          <table>
+            <tr>
+              <th>Button</th>
+              <th>Does</th>
+            </tr>
+            <tr>
+              <td>Stick or D-pad</td>
+              <td>Moves the selection to whatever lies that way.</td>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td>Chooses what is selected.</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>Closes a panel, or goes back.</td>
+            </tr>
+            <tr>
+              <td>X</td>
+              <td>The shortcut on a game: Play, Install or Store.</td>
+            </tr>
+            <tr>
+              <td>Y</td>
+              <td>The menu with hiding and marking finished.</td>
+            </tr>
+            <tr>
+              <td>Menu</td>
+              <td>Opens the sort menu.</td>
+            </tr>
+            <tr>
+              <td>Two squares</td>
+              <td>Opens search.</td>
+            </tr>
+          </table>
+          <p>
+            A keyboard does the same: the arrows move, <kbd>Enter</kbd> chooses, <kbd>Esc</kbd>
+            goes back, and <kbd>X</kbd>, <kbd>Y</kbd>, <kbd>M</kbd> and <kbd>F</kbd> do what the
+            table says. The mouse keeps working and the two never fight.
+          </p>
+          <div class="note">
+            <p>
+              <strong>Steam's keyboard.</strong> To type in Game Mode, open it with <kbd>Steam</kbd>
+              + <kbd>X</kbd>. GameDex never asks for it, because a window that summons a keyboard
+              uninvited keeps doing so.
+            </p>
+          </div>
+        </section>
+
+        <section id="offline">
+          <h2>Offline</h2>
+          <p>
+            Without a connection the whole app stays usable: your library, your figures, the
+            artwork, the achievement lists and the sizes are all on the device. What cannot happen
+            is updating, and the app says so rather than pretending.
+          </p>
+          <p>
+            Playing and installing keep working as long as Steam itself is running; those two go
+            straight to Steam rather than through GameDex.
+          </p>
+        </section>
+
+        <section id="sources">
+          <h2>Where the data comes from</h2>
+          <p>
+            Almost nothing on these screens was collected here. Your library is Valve's, the
+            completion times were submitted by players, the price history has been kept by others
+            for years.
+          </p>
+          <p>
+            The full list is in the app under Settings, at <strong>Thanks &amp; credits</strong>:
+            who provides what, whose trademarks are whose, and which open-source packages this is
+            built from.
+          </p>
+          <figure>
+            <img src="assets/credits.png" alt="The credits screen in the app" />
+            <figcaption>Settings, then "Thanks &amp; credits".</figcaption>
+          </figure>
+        </section>
+
+        <section id="trouble">
+          <h2>When something goes wrong</h2>
+
+          <h3>The library is empty after connecting</h3>
+          <p>
+            Almost always the privacy setting: <em>Game details</em> has to be Public in your
+            Steam profile. Change it and run the sync again.
+          </p>
+
+          <h3>A game has no artwork</h3>
+          <p>
+            Not every game has every size on Steam. Open the game and press
+            <strong>Fetch artwork and achievements again</strong>. If it stays empty the image
+            does not exist, and the app shows a flat tile rather than a broken picture.
+          </p>
+
+          <h3>The completion time is wrong</h3>
+          <p>
+            Matching happens on title. Pick the right entry through
+            <a href="#hltb">Fixing completion times</a>; your choice is never overwritten
+            afterwards.
+          </p>
+
+          <h3>The keyboard keeps coming back</h3>
+          <p>
+            Close it with <kbd>B</kbd> and leave the search field. If it still returns, something
+            has changed in Steam itself; write down what you did, because that is exactly the kind
+            of thing that got solved before by measuring it.
+          </p>
+
+          <h3>Something went wrong during a sync</h3>
+          <p>
+            Settings, then <strong>What went wrong</strong>. It lists what failed, with the time
+            beside it.
+          </p>
+        </section>
+
+        <footer>
+          <p>
+            GameDex is a personal project. It is not made by, endorsed by, or connected to Valve,
+            HowLongToBeat, IsThereAnyDeal, SteamHunters or Google. Steam and the Steam logo are
+            trademarks of Valve Corporation.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      // The rail follows the reading position, the way the app's rail follows
+      // the list you are in. Nothing else on this page needs script.
+      const links = [...document.querySelectorAll('.rail a')];
+      const byId = new Map(
+        links
+          .filter((link) => link.getAttribute('href').startsWith('#'))
+          .map((link) => [link.getAttribute('href').slice(1), link]),
+      );
+      const seen = new Set();
+
+      const watcher = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              seen.add(entry.target.id);
+            } else {
+              seen.delete(entry.target.id);
+            }
+          }
+
+          const first = [...byId.keys()].find((id) => seen.has(id));
+
+          for (const [id, link] of byId) {
+            link.classList.toggle('here', id === first);
+          }
+        },
+        { rootMargin: '-10% 0px -70% 0px' },
+      );
+
+      for (const section of document.querySelectorAll('section')) {
+        watcher.observe(section);
+      }
+    </script>
+  </body>
+</html>

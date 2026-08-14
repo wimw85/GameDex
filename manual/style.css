@@ -1,0 +1,410 @@
+/*
+ * The manual, dressed as the app.
+ *
+ * Every colour here is copied from src/theme/variables.css rather than picked
+ * again by eye. A handbook that is a shade off from the thing it documents
+ * reads as a handbook for something else.
+ */
+
+:root {
+  --bg: #061720;
+  --surface: #0d2b38;
+  --surface-raised: #123a48;
+  --rail: #041219;
+  --accent: #2bc6e8;
+  --accent-dim: #1b7f96;
+  --text: #e6f3f7;
+  --muted: #a8c2cc;
+  --caution: #e8b34a;
+  --chip: #17323d;
+  --chip-active: #0b4c5c;
+  --border: #14313d;
+  --radius: 10px;
+
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The two-column frame: the app's own rail, and everything else. */
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.rail {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  width: 264px;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow-y: auto;
+  background: var(--rail);
+  border-right: 1px solid var(--border);
+  padding: 18px 10px 28px;
+}
+
+.rail-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0 10px 14px;
+}
+
+.rail-brand strong {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.rail-brand span {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rail h2 {
+  margin: 18px 0 4px;
+  padding: 0 10px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rail a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.rail a:hover {
+  background: var(--chip);
+}
+
+.rail a.here {
+  background: var(--chip-active);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.rail a small {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.page {
+  flex: 1;
+  min-width: 0;
+  padding: 34px 40px 90px;
+}
+
+.page > * {
+  max-width: 980px;
+}
+
+/* Type. */
+h1 {
+  margin: 0 0 6px;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 70ch;
+}
+
+section {
+  margin: 0 0 46px;
+  scroll-margin-top: 20px;
+}
+
+h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  margin: 26px 0 6px;
+  font-size: 17px;
+}
+
+p {
+  margin: 0 0 14px;
+  max-width: 72ch;
+}
+
+ul,
+ol {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  max-width: 72ch;
+}
+
+li {
+  margin: 0 0 6px;
+}
+
+a {
+  color: var(--accent);
+}
+
+code,
+kbd {
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-family: var(--font);
+  font-size: 0.9em;
+}
+
+kbd {
+  background: var(--surface-raised);
+  font-weight: 600;
+}
+
+/* Figures: a screenshot with its caption, framed like a card in the app. */
+figure {
+  margin: 18px 0 22px;
+  max-width: 100%;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+/*
+ * A cutout is shown at its own size, or at most twice it.
+ *
+ * Stretching a 208-pixel strip of the rail across a 720-pixel column turns a
+ * crisp screenshot into a blurred one, which is worse than a small picture.
+ */
+figure.cutout img {
+  width: auto;
+  max-width: 100%;
+}
+
+figure.cutout {
+  max-width: 560px;
+}
+
+figure.tall {
+  max-width: 240px;
+}
+
+figure.wide-strip {
+  max-width: 100%;
+}
+
+figure.narrow {
+  max-width: 720px;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* A note that is worth stopping for. */
+.note {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-dim);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 0 0 18px;
+  max-width: 72ch;
+}
+
+.note.caution {
+  border-left-color: var(--caution);
+}
+
+.note p:last-child {
+  margin-bottom: 0;
+}
+
+.note strong {
+  color: var(--accent);
+}
+
+.note.caution strong {
+  color: var(--caution);
+}
+
+/* Tables, for the button maps and the figures. */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 0 18px;
+  font-size: 15px;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+td:first-child {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Callouts drawn over a screenshot, numbered like a parts diagram. */
+.diagram {
+  position: relative;
+  margin: 18px 0 10px;
+}
+
+.diagram img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.pin {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #04222c;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: center;
+  box-shadow: 0 0 0 3px rgba(6, 23, 32, 0.85);
+}
+
+.legend {
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+  max-width: 72ch;
+}
+
+.legend li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.legend b {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #04222c;
+  font-size: 13px;
+  line-height: 24px;
+  text-align: center;
+}
+
+/* Cards for a row of short facts. */
+.cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin: 0 0 22px;
+  max-width: 980px;
+}
+
+.cards div {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.cards h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.cards p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 72ch;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    display: block;
+  }
+
+  .rail {
+    position: static;
+    width: auto;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page {
+    padding: 24px 18px 60px;
+  }
+}

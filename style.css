@@ -1,0 +1,726 @@
+/*
+ * GameDex, sold.
+ *
+ * The app's palette, given room to breathe: the same navy and cyan, but with
+ * the contrast turned up where a marketing page needs to carry across a room
+ * rather than sit under someone's thumb.
+ */
+
+:root {
+  --bg: #04121a;
+  --bg-deep: #020a0f;
+  --surface: #0d2b38;
+  --surface-raised: #123a48;
+  --accent: #2bc6e8;
+  --accent-dim: #1b7f96;
+  --accent-glow: rgba(43, 198, 232, 0.22);
+  --text: #eaf6fa;
+  --muted: #9db8c3;
+  --gold: #e8b34a;
+  --border: #17394a;
+  --radius: 14px;
+
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* One scale, used everywhere, so nothing is sized by feel. */
+  --step-6: clamp(2.5rem, 4.6vw, 4.4rem);
+  --step-5: clamp(2rem, 3.4vw, 3.2rem);
+  --step-4: clamp(1.7rem, 2.6vw, 2.5rem);
+  --step-3: 1.35rem;
+  --step-2: 1.08rem;
+  --step-1: 0.94rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+}
+
+.wrap {
+  width: min(1180px, 100% - 48px);
+  margin-inline: auto;
+}
+
+/* Top bar, which thickens once you leave the hero. */
+header.bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  padding: 16px 0;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+header.bar.stuck {
+  background: rgba(4, 18, 26, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+}
+
+header.bar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.mark {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.mark span {
+  color: var(--accent);
+}
+
+nav.links {
+  display: flex;
+  gap: 26px;
+  font-size: var(--step-1);
+}
+
+nav.links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav.links a:hover {
+  color: var(--text);
+}
+
+/* Buttons. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-size: var(--step-1);
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn.solid {
+  background: var(--accent);
+  color: #04222c;
+  box-shadow: 0 8px 30px -10px var(--accent);
+}
+
+.btn.solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px var(--accent);
+}
+
+.btn.ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(13, 43, 56, 0.5);
+}
+
+.btn.ghost:hover {
+  border-color: var(--accent-dim);
+}
+
+/* The hero, in layers that move at different speeds. */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+
+.hero .glow {
+  position: absolute;
+  z-index: 0;
+  width: 130vw;
+  height: 130vw;
+  max-width: 1500px;
+  max-height: 1500px;
+  left: 50%;
+  top: -40%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 50%, var(--accent-glow), transparent 62%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero .grid-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 35%, #000 20%, transparent 75%);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 54px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(13, 43, 56, 0.6);
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin-bottom: 22px;
+}
+
+.eyebrow b {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: var(--step-6);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero p.sub {
+  margin: 0 0 32px;
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: var(--step-3);
+  line-height: 1.5;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.cta-note {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* The words always win: a screenshot that drifts under a sentence takes the
+   sentence with it. */
+.hero .copy {
+  position: relative;
+  z-index: 3;
+}
+
+/* The stack of screenshots beside the headline. */
+.stack {
+  position: relative;
+  height: 480px;
+}
+
+.stack figure {
+  position: absolute;
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+  will-change: transform;
+}
+
+.stack .shot-main {
+  width: 114%;
+  top: 40px;
+  left: 0;
+}
+
+.stack .shot-card {
+  width: 46%;
+  left: -2%;
+  top: 300px;
+}
+
+.stack .shot-panel {
+  width: 54%;
+  right: -12%;
+  top: 20px;
+}
+
+/* Section furniture. */
+section {
+  position: relative;
+  padding: 96px 0;
+  /* The bar is fixed, so an anchor has to stop below it. */
+  scroll-margin-top: 84px;
+}
+
+.kicker {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+h2 {
+  margin: 0 0 18px;
+  font-size: var(--step-5);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: var(--step-4);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: var(--step-3);
+  max-width: 60ch;
+}
+
+p {
+  margin: 0 0 16px;
+  max-width: 62ch;
+}
+
+/* The band of real numbers. */
+.numbers {
+  background: linear-gradient(180deg, transparent, rgba(13, 43, 56, 0.55), transparent);
+  border-block: 1px solid var(--border);
+}
+
+.numbers .row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+
+.numbers b {
+  display: block;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.numbers span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: var(--step-1);
+}
+
+/* Alternating feature blocks. */
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.feature.flip .copy {
+  order: 2;
+}
+
+.feature .art {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.95);
+  will-change: transform;
+}
+
+.feature .art.cut {
+  border: 0;
+  box-shadow: none;
+  display: grid;
+  place-items: center;
+}
+
+.feature .art.cut img {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.95);
+  width: auto;
+  max-width: 100%;
+}
+
+ul.ticks {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 62ch;
+}
+
+ul.ticks li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+ul.ticks li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+ul.ticks b {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* The card grid of smaller promises. */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 18px;
+  margin-top: 46px;
+}
+
+.tile {
+  background: linear-gradient(180deg, var(--surface), rgba(13, 43, 56, 0.35));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 24px 28px;
+}
+
+.tile .icon {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.tile h4 {
+  margin: 0 0 8px;
+  font-size: var(--step-2);
+}
+
+.tile p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step-1);
+}
+
+/* The price comparison, which is the wishlist's whole argument. */
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+  max-width: 620px;
+}
+
+.compare div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  background: var(--surface);
+}
+
+.compare .then {
+  opacity: 0.72;
+}
+
+.compare small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.compare strong {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+.compare .then strong {
+  color: var(--muted);
+}
+
+.compare .now strong {
+  color: var(--gold);
+}
+
+/* Steps. */
+.steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 46px;
+}
+
+.steps div {
+  border-top: 2px solid var(--accent-dim);
+  padding-top: 20px;
+}
+
+.steps div::before {
+  counter-increment: step;
+  content: '0' counter(step);
+  display: block;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.steps h4 {
+  margin: 0 0 8px;
+  font-size: var(--step-2);
+}
+
+.steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step-1);
+}
+
+/* Questions. */
+.faq {
+  margin-top: 40px;
+  border-top: 1px solid var(--border);
+  max-width: 860px;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 40px 22px 0;
+  font-size: var(--step-2);
+  font-weight: 650;
+  position: relative;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 6px;
+  top: 20px;
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq p {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+/* The closing call, on its own ground. */
+.close-band {
+  position: relative;
+  text-align: center;
+  padding: 130px 0 140px;
+  overflow: hidden;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+}
+
+.close-band .glow {
+  position: absolute;
+  width: 120vw;
+  height: 700px;
+  left: 50%;
+  bottom: -420px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 50%, var(--accent-glow), transparent 65%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.close-band .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.close-band h2 {
+  margin-inline: auto;
+  max-width: 18ch;
+}
+
+.close-band p {
+  margin-inline: auto;
+  color: var(--muted);
+  font-size: var(--step-3);
+}
+
+.close-band .cta-row {
+  justify-content: center;
+  margin-top: 30px;
+}
+
+footer.site {
+  padding: 46px 0 60px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+  background: var(--bg-deep);
+}
+
+footer.site .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+footer.site p {
+  max-width: 60ch;
+  margin: 0;
+}
+
+footer.site a {
+  color: var(--muted);
+}
+
+/* Motion: everything arrives from slightly below, once. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.d1 {
+  transition-delay: 0.08s;
+}
+
+.reveal.d2 {
+  transition-delay: 0.16s;
+}
+
+.reveal.d3 {
+  transition-delay: 0.24s;
+}
+
+@media (max-width: 980px) {
+  .hero .wrap,
+  .feature {
+    grid-template-columns: 1fr;
+  }
+
+  .feature.flip .copy {
+    order: 0;
+  }
+
+  .stack {
+    height: 340px;
+  }
+
+  .stack .shot-card,
+  .stack .shot-panel {
+    display: none;
+  }
+
+  .stack .shot-main {
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .numbers .row,
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav.links {
+    display: none;
+  }
+}
+
+/* Nobody is made seasick by a website that sells a library tracker. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .parallax {
+    transform: none !important;
+  }
+}
