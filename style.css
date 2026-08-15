@@ -1,5 +1,5 @@
 /*
- * GameDex, sold.
+ * Blyx, sold.
  *
  * The app's palette, given room to breathe: the same navy and cyan, but with
  * the contrast turned up where a marketing page needs to carry across a room
@@ -88,6 +88,9 @@ header.bar .wrap {
 }
 
 .mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -95,8 +98,12 @@ header.bar .wrap {
   color: var(--text);
 }
 
-.mark span {
-  color: var(--accent);
+/* The mark is drawn in the accent; the knockout inside it takes the page's own
+   background, so the same file works on a dark header and a light one. */
+.mark svg {
+  width: 32px;
+  height: 32px;
+  flex: none;
 }
 
 nav.links {

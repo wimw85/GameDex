@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GameDex manual</title>
+    <title>Blyx manual</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="shell">
       <nav class="rail">
         <div class="rail-brand">
-          <strong>GameDex</strong>
+          <strong>Blyx</strong>
           <span>manual</span>
         </div>
 
         <h2>Getting started</h2>
-        <a href="#what" class="here">What GameDex is</a>
+        <a href="#what" class="here">What Blyx is</a>
         <a href="#install">Installing</a>
         <a href="#connect">Connecting Steam</a>
 
@@ -53,12 +53,12 @@
         <a href="#trouble">When something goes wrong</a>
 
         <h2>Elsewhere</h2>
-        <a href="../">About GameDex</a>
-        <a href="https://github.com/wimw85/GameDex/releases/latest">Download</a>
+        <a href="../">About Blyx</a>
+        <a href="https://github.com/wimw85/Blyx/releases/latest">Download</a>
       </nav>
 
       <main class="page">
-        <h1>GameDex manual</h1>
+        <h1>Blyx manual</h1>
         <p class="lede">
           Everything the app can do, with screenshots of the app itself. Written for the Steam
           Deck build; the phone does the same things, minus what only exists on a Deck (playing,
@@ -66,16 +66,16 @@
         </p>
 
         <section id="what">
-          <h2>What GameDex is</h2>
+          <h2>What Blyx is</h2>
           <p>
-            GameDex is a second look at your Steam library. Steam shows what you own; GameDex
+            Blyx is a second look at your Steam library. Steam shows what you own; Blyx
             shows what you can do with it: how many hours your backlog holds, what is nearly
             finished, what has not been touched since you bought it, and what on your wishlist is
             on sale right now.
           </p>
 
           <figure>
-            <img src="assets/library-cards.png" alt="The library in GameDex" />
+            <img src="assets/library-cards.png" alt="The library in Blyx" />
             <figcaption>
               The library. The rail with filters and counts on the left, your games on the right.
             </figcaption>
@@ -92,7 +92,7 @@
             </div>
             <div>
               <h4>Changes nothing in Steam</h4>
-              <p>GameDex reads. All it asks Steam is: start this game, or install it.</p>
+              <p>Blyx reads. All it asks Steam is: start this game, or install it.</p>
             </div>
           </div>
         </section>
@@ -102,7 +102,7 @@
           <ol>
             <li>Switch to desktop mode.</li>
             <li>
-              Download the latest <code>GameDex.AppImage</code> from the releases page and put it
+              Download the latest <code>Blyx.AppImage</code> from the releases page and put it
               in <code>~/Applications</code>.
             </li>
             <li>Make it executable: right click, Properties, Executable.</li>
@@ -111,13 +111,13 @@
 
           <h3>Two settings on the shortcut</h3>
           <p>
-            <strong>Compatibility off.</strong> Right click GameDex, Properties, Compatibility,
+            <strong>Compatibility off.</strong> Right click Blyx, Properties, Compatibility,
             and leave the box unticked. Proton runs Windows programs; this is a Linux one, and
             forcing a compatibility tool is the most common reason it refuses to start.
           </p>
           <p>
             <strong>Launch options, if Game Mode stays black.</strong> Most installs need none, so
-            try it without first. If GameDex opens on the desktop but shows nothing in Game Mode,
+            try it without first. If Blyx opens on the desktop but shows nothing in Game Mode,
             put this in Properties, Shortcut, Launch options:
           </p>
           <p><code>LD_PRELOAD= %command% --appimage-extract-and-run</code></p>
@@ -131,7 +131,7 @@
               <td>
                 Empties the variable Steam fills with its overlay library. That library is pushed
                 into everything Steam starts and can stop a window from ever appearing under
-                gamescope. You lose the Steam overlay inside GameDex, which has no use for it.
+                gamescope. You lose the Steam overlay inside Blyx, which has no use for it.
               </td>
             </tr>
             <tr>
@@ -166,7 +166,7 @@
         <section id="connect">
           <h2>Connecting Steam</h2>
           <p>
-            On first launch GameDex asks for your Steam account. On a Deck the app already knows
+            On first launch Blyx asks for your Steam account. On a Deck the app already knows
             who is signed in, so that is usually one confirmation. What it also needs is a Steam
             Web API key: you get one at <code>steamcommunity.com/dev/apikey</code> and paste it
             into the setup screen.
@@ -346,7 +346,7 @@
               <td>Alphabetical</td>
             </tr>
             <tr>
-              <td>Added to GameDex</td>
+              <td>Added to Blyx</td>
               <td>Added to wishlist</td>
             </tr>
             <tr>
@@ -445,7 +445,7 @@
             <figcaption>Sort by rarity, by when you unlocked them, or by name.</figcaption>
           </figure>
           <p>
-            Steam leaves hidden achievements blank. GameDex fills those descriptions in from what
+            Steam leaves hidden achievements blank. Blyx fills those descriptions in from what
             SteamHunters knows, so you are not looking at an empty line.
           </p>
         </section>
@@ -454,7 +454,7 @@
           <h2>Playing</h2>
           <p>
             The button on the card starts the game through Steam. On a Deck that works in Game
-            Mode as readily as on the desktop; GameDex asks Steam to start the game and everything
+            Mode as readily as on the desktop; Blyx asks Steam to start the game and everything
             after that happens as it always does.
           </p>
           <p>
@@ -480,7 +480,7 @@
           </figure>
           <p>
             If a game will not fit comfortably that line turns amber with <em>not enough room</em>.
-            GameDex allows two gigabytes of headroom: a drive filled to the last byte is a broken
+            Blyx allows two gigabytes of headroom: a drive filled to the last byte is a broken
             Deck.
           </p>
           <div class="note">
@@ -621,8 +621,8 @@
             <li>After that, every hour while the app is open. The last 24 are kept.</li>
           </ol>
           <p>
-            The files land in a <strong>GameDex Backups</strong> folder in your own Drive, so you
-            can get at them. GameDex asks for the narrowest access Google offers: files the app
+            The files land in a <strong>Blyx Backups</strong> folder in your own Drive, so you
+            can get at them. Blyx asks for the narrowest access Google offers: files the app
             creates, and nothing else in your Drive.
           </p>
         </section>
@@ -700,7 +700,7 @@
           <div class="note">
             <p>
               <strong>Steam's keyboard.</strong> To type in Game Mode, open it with <kbd>Steam</kbd>
-              + <kbd>X</kbd>. GameDex never asks for it, because a window that summons a keyboard
+              + <kbd>X</kbd>. Blyx never asks for it, because a window that summons a keyboard
               uninvited keeps doing so.
             </p>
           </div>
@@ -715,7 +715,7 @@
           </p>
           <p>
             Playing and installing keep working as long as Steam itself is running; those two go
-            straight to Steam rather than through GameDex.
+            straight to Steam rather than through Blyx.
           </p>
         </section>
 
@@ -776,7 +776,7 @@
 
         <footer>
           <p>
-            GameDex is a personal project. It is not made by, endorsed by, or connected to Valve,
+            Blyx is a personal project. It is not made by, endorsed by, or connected to Valve,
             HowLongToBeat, IsThereAnyDeal, SteamHunters or Google. Steam and the Steam logo are
             trademarks of Valve Corporation.
           </p>
