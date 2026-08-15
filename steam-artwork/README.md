@@ -1,6 +1,6 @@
 # Steam artwork
 
-Four images for the GameDex shortcut in Steam, generated from the app's own icon
+Four images for the Blyx shortcut in Steam, generated from the app's own icon
 and the wordmark lifted out of its splash screen — so the type is the real thing
 rather than something close to it.
 
@@ -22,10 +22,10 @@ nothing inside an AppImage can reach it.
 
 Two ways to fill it:
 
-**By hand.** In Steam, right-click GameDex → *Manage* → *Set custom artwork*, once
+**By hand.** In Steam, right-click Blyx → *Manage* → *Set custom artwork*, once
 per slot.
 
-**In one command.** On the Deck, in Desktop Mode, after adding GameDex to Steam:
+**In one command.** On the Deck, in Desktop Mode, after adding Blyx to Steam:
 
 ```bash
 python3 install-artwork.py
@@ -37,7 +37,7 @@ shortcut itself — the worst it can do is leave four files in a cache folder.
 
 ## Regenerating
 
-The images are built from `docs/gamedex-icon-1024.png` and
+The images are built from `docs/blyx-icon-1024.png` and
 `docs/splash_1440x2560_v2.png`. The wordmark is cut out by turning its own
 brightness into transparency, which keeps the antialiasing intact; a threshold
 would leave ragged edges.
