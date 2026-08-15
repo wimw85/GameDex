@@ -19,6 +19,9 @@
         <a href="#install">Installing</a>
         <a href="#connect">Connecting Steam</a>
 
+        <a href="#playstation">Adding PlayStation</a>
+        <a href="#devices">Phone and desktop</a>
+
         <h2>The library</h2>
         <a href="#rail">The rail</a>
         <a href="#card">A card, read</a>
@@ -29,7 +32,8 @@
 
         <h2>One game</h2>
         <a href="#detail">Its own page</a>
-        <a href="#achievements">Achievements</a>
+        <a href="#achievements">Achievements and trophies</a>
+        <a href="#artwork">Choosing artwork</a>
         <a href="#playing">Playing</a>
         <a href="#installing">Installing and drives</a>
 
@@ -60,18 +64,20 @@
       <main class="page">
         <h1>Blyx manual</h1>
         <p class="lede">
-          Everything the app can do, with screenshots of the app itself. Written for the Steam
-          Deck build; the phone does the same things, minus what only exists on a Deck (playing,
-          installing, reading your local Steam files).
+          Everything the app can do, with screenshots of the app itself. It runs on a Steam Deck,
+          on a desktop and on an Android phone, and it reads Steam, PlayStation, or both at once.
+          The screenshots are from the Deck; <a href="#devices">Phone and desktop</a> lists what
+          each one can and cannot do.
         </p>
 
         <section id="what">
           <h2>What Blyx is</h2>
           <p>
-            Blyx is a second look at your Steam library. Steam shows what you own; Blyx
-            shows what you can do with it: how many hours your backlog holds, what is nearly
-            finished, what has not been touched since you bought it, and what on your wishlist is
-            on sale right now.
+            Blyx is a second look at the games you already own. Steam and PlayStation show what
+            you bought; Blyx shows what you can do with it: how many hours your backlog holds,
+            what is nearly finished, what has not been touched since you bought it, and what on
+            your wishlist is on sale right now. Both services land in one library, with a small
+            mark on each card saying where a game came from.
           </p>
 
           <figure>
@@ -182,6 +188,87 @@
             Then the first sync runs. It fetches your library, then achievements, completion
             times, prices and artwork. The first time takes a few minutes; after that it is
             keeping up rather than catching up.
+          </p>
+        </section>
+
+        <section id="playstation">
+          <h2>Adding PlayStation</h2>
+          <p>
+            Settings has a tab for every account you have linked, and a <b>+ PlayStation</b>
+            beside them. Pressing it opens Sony's own sign-in page in a window of its own. Your
+            password is typed to Sony; Blyx never sees it and keeps only the session Sony hands
+            back afterwards.
+          </p>
+          <p>
+            After that, the first sync reads what you played and for how long, and your trophies
+            per game. Sony hands over two lists that share no key, so Blyx asks a third question
+            — which trophy set belongs to which game — rather than matching on titles, which used
+            to miss games whose trophy set is filed under a different name.
+          </p>
+          <div class="cards">
+            <div>
+              <h4>What you get</h4>
+              <p>
+                Played games with hours, first and last played, trophies with rarity and unlock
+                dates, and your trophy level with every platinum, gold, silver and bronze.
+              </p>
+            </div>
+            <div>
+              <h4>What is missing</h4>
+              <p>
+                No wishlist and no prices: Sony's mobile API refuses both, and no price service
+                tracks consoles the way IsThereAnyDeal tracks PC shops.
+              </p>
+            </div>
+            <div>
+              <h4>Artwork</h4>
+              <p>
+                Sony ships one small icon per game, so covers, banners and logos come from
+                SteamGridDB — and you can pick a different one yourself.
+              </p>
+            </div>
+          </div>
+          <p class="note">
+            A game with no trophy progress at all has no trophy set on Sony's side, so Blyx
+            shows none. That is Sony reporting on your account, not the game lacking trophies.
+          </p>
+        </section>
+
+        <section id="devices">
+          <h2>Phone and desktop</h2>
+          <p>
+            One app, two shapes. The Deck and desktop build reads your local Steam installation
+            and can act on it; the phone cannot, and does not pretend to.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Deck &amp; desktop</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Library, hours, backlog in hours</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Steam and PlayStation together</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Achievements and trophies</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Wishlist, prices, record lows</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Statistics and completion times</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Backup and restore</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Play a game</td><td>Yes</td><td>No</td></tr>
+              <tr><td>Install, and pick the drive</td><td>Yes</td><td>No</td></tr>
+              <tr><td>Size on disk, installed state</td><td>Yes</td><td>Only what a backup carried</td></tr>
+              <tr><td>Steam collections and family sharing</td><td>Yes</td><td>No</td></tr>
+              <tr><td>Controller navigation</td><td>Yes</td><td>Touch</td></tr>
+              <tr><td>Filters</td><td>A rail, always visible</td><td>One Filter button</td></tr>
+            </tbody>
+          </table>
+
+          <p>
+            Everything in the top half of that table travels in a backup, so a phone restored
+            from a Deck knows what you hid, what you finished and which completion times you
+            corrected — and the other way round.
           </p>
         </section>
 

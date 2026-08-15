@@ -731,3 +731,11 @@ footer.site a {
     transform: none !important;
   }
 }
+
+/* A quieter line under a claim, for the caveat that makes the claim honest. */
+.note {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
