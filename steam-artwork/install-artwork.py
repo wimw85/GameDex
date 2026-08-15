@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Give the GameDex shortcut its artwork in Steam.
+"""Give the Blyx shortcut its artwork in Steam.
 
 Steam does not read artwork out of an application — a non-Steam shortcut has
 none until someone puts it there. What it does read is a folder of PNGs named
 after the shortcut's own id, which is what this writes.
 
-Run it on the Deck in Desktop Mode, after adding GameDex to Steam:
+Run it on the Deck in Desktop Mode, after adding Blyx to Steam:
 
     python3 install-artwork.py
 
@@ -107,7 +107,7 @@ def find_shortcuts() -> list[tuple[Path, dict]]:
 
 
 def main() -> int:
-    """Copies the artwork into place for every GameDex shortcut found."""
+    """Copies the artwork into place for every Blyx shortcut found."""
     here = Path(__file__).resolve().parent
     missing = [name for name in ARTWORK if not (here / name).exists()]
 
@@ -118,7 +118,7 @@ def main() -> int:
     installs = find_shortcuts()
 
     if not installs:
-        print("No Steam shortcuts file found. Add GameDex to Steam first, then run this again.")
+        print("No Steam shortcuts file found. Add Blyx to Steam first, then run this again.")
         return 1
 
     written = 0
@@ -129,7 +129,10 @@ def main() -> int:
         for entry in shortcuts.values():
             name = str(entry.get("AppName") or entry.get("appname") or "")
 
-            if "gamedex" not in name.lower():
+            # Either name: a shortcut added before the rename is still called
+            # GameDex in Steam until somebody renames it by hand, and its
+            # artwork should land on it all the same.
+            if not any(part in name.lower() for part in ("blyx", "gamedex")):
                 continue
 
             appid = entry.get("appid")
@@ -147,8 +150,8 @@ def main() -> int:
             print(f"  {name}  ->  {grid}  (id {appid})")
 
     if written == 0:
-        print("Found Steam, but no shortcut whose name contains 'GameDex'.")
-        print("Add the AppImage to Steam, rename it to GameDex, and run this again.")
+        print("Found Steam, but no shortcut whose name contains 'Blyx'.")
+        print("Add the AppImage to Steam, rename it to Blyx, and run this again.")
         return 1
 
     print(f"\nWrote {written} files. Restart Steam to see them.")
