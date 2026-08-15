@@ -755,3 +755,62 @@ footer.site a {
   border: 1px solid var(--border);
   box-shadow: 0 24px 60px rgb(0 0 0 / 0.45);
 }
+
+/* The four builds, each with its platform's mark. A row rather than a grid of
+   cards: they are four versions of one thing, not four products. */
+.platforms {
+  display: grid;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.platform {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.platform-mark {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgb(43 198 232 / 0.12);
+  color: var(--accent);
+}
+
+.platform-mark svg {
+  width: 24px;
+  height: 24px;
+}
+
+.platform h4 {
+  margin: 0 0 4px;
+  font-size: var(--step-2);
+}
+
+.platform p {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.platform code {
+  font-size: 13px;
+  color: var(--accent);
+  background: rgb(43 198 232 / 0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+@media (min-width: 760px) {
+  .platforms {
+    grid-template-columns: 1fr 1fr;
+  }
+}
