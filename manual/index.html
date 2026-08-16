@@ -248,8 +248,8 @@
           <figure>
             <img src="assets/phone-library.png" alt="The library on a phone" />
             <figcaption>
-              The same library on a phone: one Filter button, cards under each other, and a mark
-              in the corner saying which service each game came from.
+              The same library on a phone: tall artwork, one Filter button, and a mark in the
+              corner saying which service each game came from.
             </figcaption>
           </figure>
           <p>
@@ -275,7 +275,9 @@
               <tr><td>Play a game</td><td>Yes</td><td>No</td></tr>
               <tr><td>Install, and pick the drive</td><td>Yes</td><td>No</td></tr>
               <tr><td>Size on disk, installed state</td><td>Yes</td><td>Only what a backup carried</td></tr>
-              <tr><td>Steam collections and family sharing</td><td>Yes</td><td>No</td></tr>
+              <tr><td>Steam collections</td><td>Yes</td><td>Yes, out of a backup</td></tr>
+              <tr><td>Family sharing</td><td>Yes</td><td>Yes, out of a backup</td></tr>
+              <tr><td>Artwork you replaced yourself</td><td>Yes, from Steam itself</td><td>Yes, out of a backup</td></tr>
               <tr><td>Controller navigation</td><td>Yes</td><td>Touch</td></tr>
               <tr><td>Filters</td><td>A rail, always visible</td><td>One Filter button</td></tr>
             </tbody>
@@ -425,6 +427,15 @@
             <img src="assets/search.png" alt="The search panel" />
             <figcaption>The search panel, with how many games you are searching through.</figcaption>
           </figure>
+          <p>
+            Search ignores your filters: it always looks through the whole library — backlog,
+            finished, hidden and your wishlist — and every result says which list it sits in. A
+            game you hid two years ago is findable rather than invisible.
+          </p>
+          <figure class="narrow">
+            <img src="assets/phone-search.png" alt="Searching on a phone" />
+            <figcaption>Beside each name is where it lives: Backlog, Hidden or Finished.</figcaption>
+          </figure>
 
           <p>Sorting sits in the menu beside it. What is on offer depends on the list:</p>
           <table>
@@ -493,9 +504,10 @@
         <section id="options">
           <h2>Hiding and marking finished</h2>
           <p>
-            Two things only you know: whether you are done with a game, and whether you never want
-            to see it again. Both sit in the menu you open with <kbd>Y</kbd> on a card, or with a
-            right click.
+            Two things only you know: whether you are done with a game, and whether you never
+            want to see it again. Both sit in the menu you open with <kbd>Y</kbd> on a card, with
+            a right click, or with the <strong>⋯</strong> button that appears in the corner of a
+            card once your mouse is over it. On a phone you swipe the card left.
           </p>
           <figure class="narrow">
             <img src="assets/options-menu.png" alt="The menu of things you can do to one game" />
@@ -546,6 +558,12 @@
           <p>
             Steam leaves hidden achievements blank. Blyx fills those descriptions in from what
             SteamHunters knows, so you are not looking at an empty line.
+          </p>
+          <p>
+            The lists are fetched for your whole library and kept, pictures and all, so they work
+            without a connection. Once you have played, the unlocked state is read again as soon
+            as you open the page; and if the list has grown — which is what a DLC with
+            achievements does — the whole list is fetched again.
           </p>
         </section>
 
@@ -614,6 +632,25 @@
             The button here says <strong>Store</strong>. It opens the shop holding the offer,
             inside Steam itself, because in Game Mode there is no other browser.
           </p>
+
+          <h3>A nudge when something goes on sale (phone only)</h3>
+          <p>
+            There is a <strong>bell</strong> at the top of the wishlist. It sets up one
+            notification a day, at a time you choose. It is off until you turn it on.
+          </p>
+          <ul>
+            <li>It only speaks when something is newly on sale since the day before. The same
+              discount as yesterday says nothing.</li>
+            <li>One notification for everything, with the first few names in it.</li>
+            <li>The check happens on the phone itself: it asks Steam what your wishlist costs
+              today and nothing else. No server is involved.</li>
+            <li>Android decides when a background check really runs. On a phone that has been
+              asleep for a while it may arrive an hour or two after the time you picked.</li>
+          </ul>
+          <p>
+            The bell is not on the desktop or the Deck. An app that is closed cannot check
+            anything, and in Game Mode a notification from a non-Steam app is never drawn.
+          </p>
         </section>
 
         <section id="prices">
@@ -680,6 +717,28 @@
             you paid; what you handed over at the time lives on your Steam account page and
             nowhere an app can reach.
           </p>
+          <p>
+            At the top are three tabs and a row of years:
+          </p>
+          <ul>
+            <li><strong>Overview</strong> — the figures above. Pick a year and they answer for
+              that year: what you played then, what you finished, and how many achievements you
+              unlocked. The charts follow along.</li>
+            <li><strong>Per game</strong> — how long you played each game and when you last
+              touched it, with its sessions underneath. Sorted by what you touched last.</li>
+            <li><strong>Per year</strong> — a year as the months it consisted of, with the games
+              and their hours per month.</li>
+          </ul>
+          <p>
+            A year in which you did play but whose hours are not known by the day says
+            <em>Unknown</em> rather than <em>0h</em>. Steam keeps one total per game and never
+            when it happened; Blyx only starts counting from the first time it saw your hours
+            rise.
+          </p>
+          <figure class="narrow">
+            <img src="assets/phone-stats.png" alt="Statistics on a phone" />
+            <figcaption>The same figures on a phone, with the year buttons at the top.</figcaption>
+          </figure>
         </section>
 
         <section id="hltb">
@@ -717,12 +776,25 @@
           <ol>
             <li>Press <strong>Sign in with Google</strong> and sign in.</li>
             <li>The first backup goes up straight away.</li>
-            <li>After that, every hour while the app is open. The last 24 are kept.</li>
+            <li>After that, once a day while the app is open. The last 24 are kept.</li>
           </ol>
           <p>
             The files land in a <strong>Blyx Backups</strong> folder in your own Drive, so you
             can get at them. Blyx asks for the narrowest access Google offers: files the app
             creates, and nothing else in your Drive.
+          </p>
+          <p>
+            Every device writes its own file and reads the others. Merging happens per game and
+            by the moment a decision was made: hide a game on your Deck yesterday and unhide it
+            on your phone today, and today wins — whichever device it was.
+          </p>
+          <h3>Artwork you replaced yourself</h3>
+          <p>
+            Steam keeps replaced artwork in a folder only the machine it sits on can read. Blyx
+            puts scaled copies in the same Drive folder — <strong>Covers</strong>,
+            <strong>Capsules</strong>, <strong>Heroes</strong> and <strong>Logos</strong> — so
+            your phone and your Mac show the same covers as your Deck. That happens once per
+            launch, so a picture you replace today is everywhere tomorrow.
           </p>
         </section>
 
