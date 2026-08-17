@@ -47,6 +47,7 @@
 
         <h2>Settings</h2>
         <a href="#backup">Backup to Drive</a>
+        <a href="#adding">Adding a game yourself</a>
         <a href="#storage">Storage and cache</a>
         <a href="#syncing">Syncing</a>
         <a href="#updates">Updates</a>
@@ -279,6 +280,7 @@
               <tr><td>Steam collections</td><td>Yes</td><td>Yes, out of a backup</td></tr>
               <tr><td>Family sharing</td><td>Yes</td><td>Yes, out of a backup</td></tr>
               <tr><td>Artwork you replaced yourself</td><td>Yes, from Steam itself</td><td>Yes, out of a backup</td></tr>
+              <tr><td>Games you add yourself (Switch, 3DS, …)</td><td>Yes</td><td>Yes</td></tr>
               <tr><td>Controller navigation</td><td>Yes</td><td>Touch</td></tr>
               <tr><td>Filters</td><td>A rail, always visible</td><td>One Filter button</td></tr>
             </tbody>
@@ -288,6 +290,37 @@
             Everything in the top half of that table travels in a backup, so a phone restored
             from a Deck knows what you hid, what you finished and which completion times you
             corrected — and the other way round.
+          </p>
+        </section>
+
+        <section id="adding">
+          <h2>Adding a game yourself</h2>
+          <p>
+            For what you play somewhere this app cannot reach: a Switch, a 3DS, a console in a
+            cupboard. On a phone <strong>+ Add a game</strong> sits at the foot of the filter
+            panel; on a Deck and a desktop it is in the rail.
+          </p>
+          <ol>
+            <li>Type the name and press <strong>Search</strong> — you are searching HowLongToBeat.</li>
+            <li>Pick the right entry. It shows the year, the platforms and how long it takes.</li>
+            <li>Say where you play it. The buttons come from that entry itself, so a Switch game
+              cannot end up filed under Dreamcast.</li>
+          </ol>
+          <p>
+            The game arrives with its box art and all four HowLongToBeat times, and counts towards
+            your backlog. The corner of the card carries the platform in its maker's own colour —
+            Nintendo red, Xbox green, PlayStation blue.
+          </p>
+          <p>
+            Its own page has <strong>Time played</strong>: two boxes, hours and minutes. What you
+            type is saved as you leave the box and counts in your totals — but not in the
+            per-month chart, because 113 hours of Zelda from three years ago did not happen this
+            afternoon. <strong>Remove this game</strong> takes it out again, and it stays out:
+            your other devices will not hand it back.
+          </p>
+          <p class="note">
+            No achievements, no price, no installing. None of those exist for a game that came
+            from no shop here, and the screen does not pretend otherwise.
           </p>
         </section>
 
@@ -652,6 +685,13 @@
             inside Steam itself, because in Game Mode there is no other browser.
           </p>
 
+          <p>
+            On a phone the rows look like your library — tall artwork, the same spacing — with
+            today's shop underneath and the lowest price ever <em>with the date it was set</em>.
+            Pull the list down to fetch the prices again; that asks for your wishlist and its
+            prices only, not the whole sync.
+          </p>
+
           <h3>A nudge when something goes on sale (phone only)</h3>
           <p>
             There is a <strong>bell</strong> at the top of the wishlist. It sets up one
@@ -797,6 +837,14 @@
             <li>The first backup goes up straight away.</li>
             <li>After that, once a day while the app is open. The last 24 are kept.</li>
           </ol>
+          <p>
+            Every device writes to a file of its own — <code>blyx-phone-1p6p.json</code>,
+            <code>blyx-mac-yiu4.json</code> — with a short id in the name, so two devices of a
+            kind cannot overwrite each other. Merging happens per game and per decision: whoever
+            decided last is right, whether that is hiding, finishing, a pinned completion time or
+            hours you typed in yourself. Hours Steam keeps only ever go up, because a counter does
+            not run backwards.
+          </p>
           <p>
             The files land in a <strong>Blyx Backups</strong> folder in your own Drive, so you
             can get at them. Blyx asks for the narrowest access Google offers: files the app
