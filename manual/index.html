@@ -49,6 +49,8 @@
         <a href="#backup">Backup to Drive</a>
         <a href="#adding">Adding a game yourself</a>
         <a href="#storage">Storage and cache</a>
+        <a href="#year">Your year</a>
+        <a href="#importing">Bringing in what you kept</a>
         <a href="#syncing">Syncing</a>
         <a href="#updates">Updates</a>
 
@@ -800,6 +802,62 @@
           </figure>
         </section>
 
+        <section id="year">
+          <h2>Your year, read as a year</h2>
+          <p>
+            Pick a <strong>finished year</strong> in Statistics and a card with that year on it
+            appears at the top. Press it.
+          </p>
+          <p>What you get, in this order:</p>
+          <ul>
+            <li>How long you played, across how many games, in how many sessions.</li>
+            <li>Finished, unlocked, your best month and your longest run of days.</li>
+            <li><strong>Where the hours went</strong> — a bar in each maker's own colours, so Steam,
+              PlayStation and the Switch on your shelf sit side by side.</li>
+            <li><strong>Most played</strong>, with the artwork.</li>
+            <li><strong>The timeline</strong>: January at the top, December at the bottom, each month
+              showing the covers of what you played with the hours on them. Tap one to open the
+              game. Games under an hour are counted below the row rather than drawn.</li>
+          </ul>
+          <p class="note">
+            All of it comes from what Blyx recorded itself, plus whatever you brought in. An empty
+            month stays empty — that is part of a year too.
+          </p>
+        </section>
+
+        <section id="importing">
+          <h2>Bringing in what you kept elsewhere</h2>
+          <p>
+            Blyx builds its history by noticing what changes, so it knows nothing about the years
+            before it was on your devices. These three buttons in Settings fill that in. Each one
+            shows what it found before it writes anything.
+          </p>
+
+          <h3>A DekuDeals collection</h3>
+          <p>
+            Your notes there are private, so this works from the page itself: in a signed-in
+            browser, open your collection filtered to <em>Completed</em>, save each page with
+            <strong>Save as → Page Source</strong>, and pick the files. Blyx reads the name, the
+            platform, the hours and the date out of your note and adds them as games of your own.
+          </p>
+
+          <h3>A HowLongToBeat backup</h3>
+          <p>
+            The CSV it exports knows something no service publishes: the day you finished a game.
+            Games already here are given that date, so they count in their own year; games it has
+            never heard of are added by hand. A Steam game's playtime is left alone — that figure
+            belongs to Steam.
+          </p>
+
+          <h3>The years Steam keeps</h3>
+          <p>
+            Steam publishes a year in review each December, month by month and game by game, at a
+            public address. One press of <strong>Fetch the years Steam knows</strong> writes those
+            years into your own history, sessions and all — and sessions are something only Valve
+            counts.
+          </p>
+        </section>
+
         <section id="hltb">
           <h2>Fixing completion times</h2>
           <p>
@@ -888,7 +946,15 @@
           <p>
             If you would rather not wait, <strong>Sync now</strong> sits directly above
             Statistics in the rail. It is also the answer to "has it seen the achievements I just
-            unlocked?".
+            unlocked?" — and on a phone you can pull the achievement list down to ask the same
+            thing, which costs a single request.
+          </p>
+          <p>
+            While the app is open Blyx checks every five minutes whether your playtime has risen —
+            two requests — and on a Deck or a desktop it reads the Steam client's own files as
+            well, which change the moment a game exits. Every rise it sees is a session. Looking
+            more often makes the history sharper: two evenings between two glances would otherwise
+            look like one.
           </p>
         </section>
 
